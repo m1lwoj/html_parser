@@ -1,6 +1,8 @@
-from bs4 import BeautifulSoup
+from unidecode import unidecode
 import re
+from bs4 import BeautifulSoup
 from annotations import *
+#-*- coding: windows-1250 -*-
 
 class HtmlParser:
     def __init__(self):
@@ -39,7 +41,6 @@ class HtmlParser:
 
     @safe_run
     def set_researcher(self, soup):
-        print(soup(text=re.compile(r'Badaj')))
         element = soup(text=re.compile(r'Badający:'))[0].find_next('td')
         self.patient['Badający'] = element.text.strip()
 
@@ -57,7 +58,10 @@ class HtmlParser:
         self.set_researcher(soup)
 
         print('\nResult:')
-        print(self.patient)
+        # s1 = str(self.patient).decode('utf-8')
+        # s2 = unicodedata.normalize('NFD', s1).encode('ascii', 'ignore')     
+        # print(s1)
+        print(unidecode(str(self.patient)))
         print('--- End --- \n')
 
         return self.patient
