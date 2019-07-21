@@ -1,6 +1,12 @@
 {
     "INPUT_DIR": "D:\\Projekty\\skrypty\\pliki_html\\input",
     "OUTPUT_DIR": "D:\\Projekty\\skrypty\\pliki_html\\output_dir",
+    "MERGE_DIR": "D:\\Projekty\\skrypty\\pliki_html\\merge_dir",
     "Extension": ".txt",
-    "Encoding": "windows-1250"
+    "Encoding": "windows-1250",
+
+    "PUBLISHER": "ConfVal11",
+    "OUT_STACKER": "ConfVal12",
+    "DISC_TYPE": "ConfVal13",
+    "LABEL": "ConfVal14"
 }
