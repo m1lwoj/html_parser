@@ -28,9 +28,13 @@ class Config:
         print('OUT_STACKER: ' + self.outStacker)
         print('DISC_TYPE: ' + self.discType)
         print('LABEL: ' + self.label)
+        print('---------------------------')
 
 def start(config):
     for (dirpath, dirnames, filenames) in os.walk(config.inputDir):
+        if '.processed' in filenames:
+            continue
+
         for filename in filenames:
             if filename.endswith('.html'): 
                 filePath = os.sep.join([dirpath, filename])
@@ -40,6 +44,8 @@ def start(config):
                 FileHelper.create_merge_file(merge_file_path, config.encoding, parsed_html)
                 output_file_path = os.sep.join([config.outputDir, 'JOB_' + basename(normpath(dirpath)) + '.inp'])
                 FileHelper.create_output_file(output_file_path, config, basename(normpath(dirpath)), dirpath, merge_file_path)
+                
+                FileHelper.create_processed_file(dirpath)
 
 def load_config():
     with open('config.json') as json_file:  

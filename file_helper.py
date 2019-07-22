@@ -5,7 +5,7 @@ import uuid
 class FileHelper():
     @staticmethod
     @safe_run
-    def  create_output_file(outputFilePath, config, processingDir, processingFilePath, mergeFilePath):
+    def create_output_file(outputFilePath, config, processingDir, processingFilePath, mergeFilePath):
         print('--- Saving output file ---')
         print(outputFilePath)
 
@@ -49,6 +49,16 @@ class FileHelper():
         with open(path, 'w', encoding=encoding) as f:
             for key, value in model.items():
                 f.write(key + '=' + value + '\n')
+        
+        print('--- End ---\n')
+
+    @staticmethod
+    @safe_run
+    def create_processed_file(path):
+        print('--- Saving processed file ---')
+        print(os.sep.join([path, '.processed']))
+
+        open(os.sep.join([path, '.processed']), 'w').close()
         
         print('--- End ---\n')
 
