@@ -31,7 +31,7 @@ class Config:
         print('---------------------------')
 
 def start(config):
-    for (dirpath, dirnames, filenames) in os.walk(config.inputDir):
+    for (dirpath, dirnames, filenames) in FileHelper.gothroughdirectory(config.inputDir, 1):
         if '.processed' in filenames:
             continue
 
